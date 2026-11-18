@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup Stress-Test TN — Testez la résistance de votre startup</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     SIDEBAR NAVIGATION
+     ============================================================ -->
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="Ouvrir le menu">
+  <i class="fas fa-bars"></i>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+    <div>
+      <h2>Stress-Test TN</h2>
+      <small>Entrepreneurs tunisiens</small>
+    </div>
+  </div>
+
+  <ul class="sidebar-nav" id="mainNav">
+    <li><div class="nav-section-label">Général</div></li>
+    <li><button class="active" data-page="accueil"><i class="fas fa-house"></i> Accueil</button></li>
+    <li><button data-page="questionnaire"><i class="fas fa-list-check"></i> Questionnaire</button></li>
+
+    <li><div class="nav-section-label">Analyse</div></li>
+    <li><button data-page="simulateur"><i class="fas fa-chart-line"></i> Simulateur</button></li>
+    <li><button data-page="diagnostic"><i class="fas fa-stethoscope"></i> Diagnostic</button></li>
+    <li><button data-page="pivot"><i class="fas fa-shuffle"></i> Scénarios Pivot</button></li>
+
+    <li><div class="nav-section-label">Outils</div></li>
+    <li><button data-page="personas"><i class="fas fa-users"></i> Personas Client</button></li>
+    <li><button data-page="business-plan"><i class="fas fa-file-invoice"></i> Business Plan</button></li>
+    <li><button data-page="rapport"><i class="fas fa-chart-pie"></i> Rapport Complet</button></li>
+    <li><button data-page="conseils"><i class="fas fa-sparkles"></i> Conseils IA</button></li>
+    <li><button data-page="suggestions"><i class="fas fa-lightbulb"></i> Suggestions</button></li>
+  </ul>
+
+  <div class="sidebar-footer">© 2026 Startup Stress-Test TN</div>
+</aside>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main class="main-content">
+
+  <!-- ===================== A. ACCUEIL ===================== -->
+  <section class="page-section active" id="page-accueil">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-eyebrow"><i class="fas fa-flask-vial"></i> Conçu pour les entrepreneurs tunisiens</div>
+        <h1>Startup <span class="accent">Stress-Test</span> TN</h1>
+        <p class="subtitle">Avant d'investir votre temps et votre argent, testez la résistance de votre idée face aux vraies conditions du marché tunisien.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="App.navigateTo('questionnaire')">
+            <i class="fas fa-rocket"></i> Commencer le test
+          </button>
+          <button class="btn btn-outline" onclick="App.navigateTo('simulateur')">
+            <i class="fas fa-chart-bar"></i> Simulateur rapide
+          </button>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-mini-card">
+            <div class="mini-label">Score de résistance</div>
+            <div class="mini-value" style="color:var(--teal-400)">78/100</div>
+            <div class="mini-trend"><i class="fas fa-check-circle"></i> Modèle viable</div>
+          </div>
+          <div class="hero-mini-card">
+            <div class="mini-label">Seuil de rentabilité</div>
+            <div class="mini-value" style="color:var(--brand-400)">97 cmd</div>
+            <div class="mini-trend"><i class="fas fa-arrow-trend-up"></i> Couverture 206%</div>
+          </div>
+          <div class="hero-mini-card">
+            <div class="mini-label">Après stress-test</div>
+            <div class="mini-value" style="color:var(--amber-400)">+1 240 DT</div>
+            <div class="mini-trend"><i class="fas fa-shield-halved"></i> Résistant aux chocs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="features-section">
+      <div class="section-header">
+        <h2>Tout ce qu'il faut pour valider votre idée</h2>
+        <p>Des outils pensés pour vous accompagner à chaque étape de votre réflexion entrepreneuriale.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" onclick="App.navigateTo('simulateur')">
+          <i class="fas fa-arrow-up-right card-arrow"></i>
+          <div class="icon-wrap coral"><i class="fas fa-chart-line"></i></div>
+          <h3>Simulateur Financier</h3>
+          <p>Testez la résistance de votre modèle économique face à différents chocs et scénarios de crise.</p>
+        </div>
+        <div class="feature-card" onclick="App.navigateTo('diagnostic')">
+          <i class="fas fa-arrow-up-right card-arrow"></i>
+          <div class="icon-wrap teal"><i class="fas fa-stethoscope"></i></div>
+          <h3>Diagnostic Complet</h3>
+          <p>Évaluez 5 dimensions clés de votre startup : marché, offre, innovation, évolutivité et impact.</p>
+        </div>
+        <div class="feature-card" onclick="App.navigateTo('questionnaire')">
+          <i class="fas fa-arrow-up-right card-arrow"></i>
+          <div class="icon-wrap blue"><i class="fas fa-brain"></i></div>
+          <h3>Questionnaire IA</h3>
+          <p>Répondez à des questions adaptatives qui s'ajustent intelligemment à votre profil d'entrepreneur.</p>
+        </div>
+        <div class="feature-card" onclick="App.navigateTo('business-plan')">
+          <i class="fas fa-arrow-up-right card-arrow"></i>
+          <div class="icon-wrap gold"><i class="fas fa-file-invoice"></i></div>
+          <h3>Business Plan</h3>
+          <p>Générez un plan d'affaires structuré prêt pour vos investisseurs et partenaires.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3 class="counter" data-target="1000">0</h3>
+          <p>Entrepreneurs accompagnés</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="counter" data-target="15">0</h3>
+          <p>Secteurs analysés</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="counter" data-target="50">0</h3>
+          <p>Scénarios de stress-test</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="counter" data-target="98">0</h3>
+          <p>% de satisfaction</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Market Data Section -->
+    <div class="market-section" id="marketSection">
+      <div class="section-header">
+        <h2>Données du marché tunisien</h2>
+        <p>Benchmarks sectoriels réels pour calibrer vos hypothèses.</p>
+      </div>
+      <div class="market-scroll" id="marketScroll">
+        <!-- filled by JS -->
+      </div>
+      <div class="market-macro" id="marketMacro">
+        <!-- macro indicators -->
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===================== B. QUESTIONNAIRE ===================== -->
+  <section class="page-section" id="page-questionnaire">
+    <div class="page-container">
+      <div class="page-header">
+        <h1><i class="fas fa-list-check"></i> Questionnaire Intelligent</h1>
+        <p>Répondez à quelques questions pour personnaliser votre analyse.</p>
+      </div>
+
+      <div class="questionnaire-wrapper">
+        <div class="progress-steps" id="progressSteps">
+          <!-- steps injected by JS -->
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+
+        <div id="questionContainer">
+          <div class="loading-state" id="questionLoading">
+            <div class="spinner"></div>
+            <p>Chargement des questions…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== C. SIMULATEUR ===================== -->
+  <section class="page-section" id="page-simulateur">
+    <div class="page-container">
+      <div class="page-header">
+        <h1><i class="fas fa-chart-line"></i> Simulateur de Stress-Test Financier</h1>
+        <p>Modifiez les paramètres et observez l'impact en temps réel sur votre rentabilité.</p>
+      </div>
+
+      <!-- Preset -->
+      <div class="preset-select">
+        <label><i class="fas fa-bookmark"></i> Scénario :</label>
+        <select class="form-control" id="presetScenario" style="max-width:300px">
+          <option value="custom">Mon entreprise (personnalisé)</option>
+          <option value="okkis">Okkis : cas documenté</option>
+        </select>
+      </div>
+
+      <div class="sim-layout">
+        <!-- Left: Inputs -->
+        <div class="sim-panel">
+          <div class="card">
+            <div class="card-header"><h3><i class="fas fa-sliders" style="color:var(--primary)"></i> Paramètres financiers</h3></div>
+            <div class="card-body">
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Panier moyen (DT)</span>
+                  <span class="slider-value" id="val_panier">89</span>
+                </div>
+                <div class="slider-row">
+                  <input type="range" id="sim_panier" min="10" max="500" value="89" step="1">
+                  <input type="number" id="num_panier" min="10" max="500" value="89">
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Coût des produits (DT)</span>
+                  <span class="slider-value" id="val_cout_produits">45</span>
+                </div>
+                <div class="slider-row">
+                  <input type="range" id="sim_cout_produits" min="0" max="400" value="45" step="1">
+                  <input type="number" id="num_cout_produits" min="0" max="400" value="45">
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Livraison facturée au client (DT)</span>
+                  <span class="slider-value" id="val_livraison">0</span>
+                </div>
+                <div class="slider-row">
+                  <input type="range" id="sim_livraison" min="0" max="30" value="0" step="0.5">
+                  <input type="number" id="num_livraison" min="0" max="30" value="0">
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Coût de transport (DT)</span>
+                  <span class="slider-value" id="val_cout_transport">8</span>
+                </div>
+                <div class="slider-row">
+                  <input type="range" id="sim_cout_transport" min="0" max="50" value="8" step="0.5">
+                  <input type="number" id="num_cout_transport" min="0" max="50" value="8">
+                </div>
+              </div>
+
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Autres coûts variables (DT)</span>
+                  <span class="slider-value" id="val_autres">5</span>
+                </div>
+                <div class="slider-row">
+                  <input type="range" id="sim_autres" min="0" max="100" value="5" step="1">
+                  <input type="number" id="num_autres" min="0" max="100" value="5">
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Charges fixes mensuelles (DT)</span>
+                  <span class="slider-value" id="val_charges">3000</span>
+                </div>
+                <div class="slider-row">
+                  <input type="range" id="sim_charges" min="0" max="50000" value="3000" step="100">
+                  <input type="number" id="num_charges" min="0" max="50000" value="3000">
+                </div>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Commandes / mois</span>
+                  <span class="slider-value" id="val_commandes">200</span>
+                </div>
+                <div class="slider-row">
+                  <input type="range" id="sim_commandes" min="1" max="5000" value="200" step="1">
+                  <input type="number" id="num_commandes" min="1" max="5000" value="200">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shocks -->
+          <div class="card">
+            <div class="card-header"><h3><i class="fas fa-bolt" style="color:var(--danger)"></i> Chocs à simuler</h3></div>
+            <div class="card-body">
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Choc A : Hausse du coût de transport</span>
+                  <span class="slider-value" id="val_choc_a">30%</span>
+                </div>
+                <input type="range" class="teal" id="sim_choc_a" min="0" max="100" value="30">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Choc B : Baisse de la demande</span>
+                  <span class="slider-value" id="val_choc_b">20%</span>
+                </div>
+                <input type="range" class="teal" id="sim_choc_b" min="0" max="100" value="20">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Choc C : Pression concurrentielle</span>
+                  <span class="slider-value" id="val_choc_c">10%</span>
+                </div>
+                <input type="range" class="teal" id="sim_choc_c" min="0" max="50" value="10">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span class="slider-label">Choc D : Réduction de la marge</span>
+                  <span class="slider-value" id="val_choc_d">10%</span>
+                </div>
+                <input type="range" class="teal" id="sim_choc_d" min="0" max="50" value="10">
+              </div>
+
+              <div class="toggle-wrap">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="simCombined" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+                <span class="toggle-label">Appliquer les chocs ensemble</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Results -->
+        <div class="sim-results-area">
+          <!-- Big Result -->
+          <div class="card">
+            <div class="result-hero" id="resultHero">
+              <p style="font-size:14px;color:var(--text-light);margin-bottom:8px">Résultat après simulation</p>
+              <div class="amount positive" id="resultAmount">+3 200 DT</div>
+              <span class="result-badge profit" id="resultBadge">BÉNÉFICE</span>
+            </div>
+          </div>
+
+          <!-- KPIs -->
+          <div class="kpi-grid" id="kpiGrid">
+            <div class="kpi-tile">
+              <div class="kpi-label">Marge / commande</div>
+              <div class="kpi-value" id="kpiMarge">31.00 DT</div>
+              <div class="kpi-sub" id="kpiMargeAfter">Après choc : 24.70 DT</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-label">Seuil de rentabilité</div>
+              <div class="kpi-value" id="kpiSeuil">97 cmd</div>
+              <div class="kpi-sub" id="kpiSeuilAfter">Après choc : 122 cmd</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-label">Commandes restantes</div>
+              <div class="kpi-value" id="kpiRestantes">160</div>
+              <div class="kpi-sub">après baisse de demande</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-label">Couverture charges fixes</div>
+              <div class="kpi-value" id="kpiCouverture">132%</div>
+              <div class="coverage-bar-wrap">
+                <div class="coverage-bar" id="coverageBar" style="width:100%;background:var(--success)"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shock decomposition -->
+          <div class="card">
+            <div class="card-header"><h3><i class="fas fa-layer-group" style="color:var(--secondary)"></i> Décomposition des chocs</h3></div>
+            <div class="card-body">
+              <div class="shock-decomp" id="shockDecomp">
+                <div class="shock-row"><span class="shock-name">Choc A : Transport</span><span class="shock-impact">-480 DT</span></div>
+                <div class="shock-row"><span class="shock-name">Choc B : Demande</span><span class="shock-impact">-1 240 DT</span></div>
+                <div class="shock-row"><span class="shock-name">Choc C : Concurrence</span><span class="shock-impact">-620 DT</span></div>
+                <div class="shock-row"><span class="shock-name">Choc D : Marge</span><span class="shock-impact">-310 DT</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts -->
+          <div class="charts-grid">
+            <div class="card">
+              <div class="card-header"><h3>Résultat avant / après</h3></div>
+              <div class="chart-wrap"><canvas id="chartBar"></canvas></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h3>Décomposition des coûts</h3></div>
+              <div class="chart-wrap"><canvas id="chartPie"></canvas></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h3>Sensibilité au choc</h3></div>
+              <div class="chart-wrap"><canvas id="chartLine"></canvas></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h3>Score de résistance</h3></div>
+              <div class="chart-wrap" style="display:flex;align-items:center;justify-content:center;min-height:260px">
+                <div class="score-circle" id="gaugeWrap">
+                  <svg width="160" height="160" viewBox="0 0 160 160">
+                    <circle cx="80" cy="80" r="70" fill="none" stroke="#e8e8ed" stroke-width="12"/>
+                    <circle cx="80" cy="80" r="70" fill="none" stroke="var(--secondary)" stroke-width="12"
+                      stroke-dasharray="440" stroke-dashoffset="110" stroke-linecap="round" id="gaugeArc"/>
+                  </svg>
+                  <div class="score-value" id="gaugeValue">75</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== D. DIAGNOSTIC ===================== -->
+  <section class="page-section" id="page-diagnostic">
+    <div class="page-container">
+      <div class="page-header">
+        <h1><i class="fas fa-stethoscope"></i> Diagnostic de Viabilité</h1>
+        <p>Analysez les 5 dimensions clés de votre projet entrepreneurial.</p>
+      </div>
+
+      <div id="diagContent">
+        <!-- Before diagnostic: prompt -->
+        <div class="empty-state" id="diagEmpty">
+          <div class="empty-icon"><i class="fas fa-stethoscope"></i></div>
+          <h3>Lancez votre diagnostic</h3>
+          <p>Complétez d'abord le questionnaire ou remplissez les informations ci-dessous.</p>
+          <button class="btn btn-primary mt-3" onclick="App.runDiagnostic()"><i class="fas fa-play"></i> Lancer le diagnostic</button>
+        </div>
+
+        <!-- Results -->
+        <div class="hidden" id="diagResults">
+          <div class="diag-layout">
+            <!-- Left: Radar + overall -->
+            <div>
+              <div class="card mb-24">
+                <div class="score-viability">
+                  <h3 style="font-size:14px;color:var(--text-light);margin-bottom:16px">Score de Viabilité</h3>
+                  <div class="score-circle" id="diagScoreCircle">
+                    <svg width="160" height="160" viewBox="0 0 160 160">
+                      <circle cx="80" cy="80" r="70" fill="none" stroke="#e8e8ed" stroke-width="12"/>
+                      <circle cx="80" cy="80" r="70" fill="none" stroke="var(--secondary)" stroke-width="12"
+                        stroke-dasharray="440" stroke-dashoffset="440" stroke-linecap="round" id="diagScoreArc"/>
+                    </svg>
+                    <div class="score-value" id="diagScoreVal">0</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header"><h3>Radar de performance</h3></div>
+                <div class="chart-wrap"><canvas id="chartRadar"></canvas></div>
+              </div>
+            </div>
+
+            <!-- Right: Dimension cards + recs -->
+            <div>
+              <div class="dim-cards" id="dimCards">
+                <!-- filled by JS -->
+              </div>
+
+              <div class="card mt-24">
+                <div class="card-header"><h3><i class="fas fa-lightbulb" style="color:var(--warning)"></i> Recommandations</h3></div>
+                <div class="card-body">
+                  <ul class="reco-list" id="recoList">
+                    <!-- filled by JS -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== E. SCÉNARIOS DE PIVOT ===================== -->
+  <section class="page-section" id="page-pivot">
+    <div class="page-container">
+      <div class="page-header">
+        <h1><i class="fas fa-shuffle"></i> Scénarios de Pivot</h1>
+        <p>Explorez des alternatives stratégiques et comparez leur impact financier.</p>
+      </div>
+
+      <div class="empty-state" id="pivotEmpty">
+        <div class="empty-icon"><i class="fas fa-shuffle"></i></div>
+        <h3>Générer des scénarios de pivot</h3>
+        <p>Complétez le simulateur pour obtenir des suggestions de pivot adaptées.</p>
+        <button class="btn btn-secondary mt-3" onclick="App.loadPivots()"><i class="fas fa-play"></i> Générer les scénarios</button>
+      </div>
+
+      <div class="hidden" id="pivotResults">
+        <div class="pivot-grid" id="pivotGrid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== F. PERSONAS CLIENT ===================== -->
+  <section class="page-section" id="page-personas">
+    <div class="page-container">
+      <div class="page-header">
+        <h1><i class="fas fa-users"></i> Personas Client</h1>
+        <p>Découvrez les profils types de vos clients potentiels.</p>
+      </div>
+
+      <div class="empty-state" id="personasEmpty">
+        <div class="empty-icon"><i class="fas fa-users"></i></div>
+        <h3>Simuler des personas</h3>
+        <p>Générez des personas basées sur votre secteur d'activité.</p>
+        <button class="btn btn-primary mt-3" onclick="App.loadPersonas()"><i class="fas fa-play"></i> Générer les personas</button>
+      </div>
+
+      <div class="hidden" id="personasResults">
+        <div class="persona-grid" id="personaGrid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== G. BUSINESS PLAN ===================== -->
+  <section class="page-section" id="page-business-plan">
+    <div class="page-container">
+      <div class="page-header flex justify-between items-center">
+        <div>
+          <h1><i class="fas fa-file-invoice"></i> Business Plan</h1>
+          <p>Un plan d'affaires structuré, prêt à exporter.</p>
+        </div>
+        <button class="btn btn-ghost" onclick="App.exportBP()"><i class="fas fa-print"></i> Exporter / Imprimer</button>
+      </div>
+
+      <div class="empty-state" id="bpEmpty">
+        <div class="empty-icon"><i class="fas fa-file-invoice"></i></div>
+        <h3>Générer votre Business Plan</h3>
+        <p>Complétez le questionnaire et le simulateur pour générer un plan d'affaires complet.</p>
+        <button class="btn btn-primary mt-3" onclick="App.generateBP()"><i class="fas fa-wand-magic-sparkles"></i> Générer le plan</button>
+      </div>
+
+      <div class="hidden" id="bpContent">
+        <!-- sections injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RAPPORT COMPLET ===================== -->
+  <section class="page-section" id="page-rapport">
+    <div class="page-container">
+      <div class="page-header flex justify-between items-center">
+        <div>
+          <h1><i class="fas fa-chart-pie"></i> Rapport Complet</h1>
+          <p>Synthèse complète de votre analyse entrepreneuriale.</p>
+        </div>
+        <button class="btn btn-ghost" onclick="window.print()"><i class="fas fa-print"></i> Imprimer</button>
+      </div>
+      <div id="rapportContent">
+        <div class="empty-state" id="rapportEmpty">
+          <div class="empty-icon"><i class="fas fa-chart-pie"></i></div>
+          <h3>Complétez d'abord votre analyse</h3>
+          <p>Remplissez le questionnaire, le simulateur et le diagnostic pour générer votre rapport complet.</p>
+          <button class="btn btn-primary mt-3" onclick="App.navigateTo('questionnaire')"><i class="fas fa-play"></i> Commencer</button>
+        </div>
+        <div class="hidden" id="rapportData"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== H. CONSEILS IA ===================== -->
+  <section class="page-section" id="page-conseils">
+    <div class="page-container">
+      <div class="page-header">
+        <h1><i class="fas fa-sparkles"></i> Conseils IA</h1>
+        <p>Recevez des recommandations personnalisées basées sur vos données réelles.</p>
+      </div>
+
+      <div style="max-width:800px">
+        <div class="advice-input-wrap">
+          <input type="text" class="form-control" id="adviceInput" placeholder="Décrivez votre situation ou posez une question… ex: Mon transport coûte trop cher, que faire ?">
+          <button class="btn btn-primary" onclick="App.askAdvice()"><i class="fas fa-paper-plane"></i> Envoyer</button>
+        </div>
+
+        <div id="adviceChat">
+          <div class="empty-state" id="adviceEmpty">
+            <div class="empty-icon"><i class="fas fa-sparkles"></i></div>
+            <h3>Votre assistant entrepreneurial</h3>
+            <p>Posez une question sur votre projet — l'IA vous donnera des conseils personnalisés basés sur vos chiffres.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== I. SUGGESTIONS DE STARTUP ===================== -->
+  <section class="page-section" id="page-suggestions">
+    <div class="page-container">
+      <div class="page-header">
+        <h1><i class="fas fa-lightbulb"></i> Suggestions de Startup</h1>
+        <p>Trouvez l'idée de startup adaptée à votre profil.</p>
+      </div>
+
+      <div class="suggestions-form">
+        <div class="form-group">
+          <label><i class="fas fa-industry"></i> Domaine</label>
+          <select class="form-control" id="sugDomain">
+            <option value="">Choisir un domaine…</option>
+            <option value="e-commerce">E-commerce</option>
+            <option value="food-tech">Food Tech</option>
+            <option value="ed-tech">Ed Tech</option>
+            <option value="health-tech">Health Tech</option>
+            <option value="fintech">Fintech</option>
+            <option value="services">Services</option>
+            <option value="artisanat">Artisanat</option>
+            <option value="agriculture">Agriculture</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-coins"></i> Budget (DT)</label>
+          <select class="form-control" id="sugBudget">
+            <option value="0-5000">Moins de 5 000 DT</option>
+            <option value="5000-20000">5 000 — 20 000 DT</option>
+            <option value="20000-50000">20 000 — 50 000 DT</option>
+            <option value="50000+">Plus de 50 000 DT</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-wrench"></i> Compétences</label>
+          <input type="text" class="form-control" id="sugSkills" placeholder="ex: marketing, dev web, cuisine…">
+        </div>
+        <div class="form-group" style="display:flex;align-items:flex-end">
+          <button class="btn btn-secondary" onclick="App.getSuggestions()" style="width:100%"><i class="fas fa-search"></i> Trouver des idées</button>
+        </div>
+      </div>
+
+      <div id="sugResults">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- App JS -->
+<script src="/js/app.js"></script>
+</body>
+</html>

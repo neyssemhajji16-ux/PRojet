@@ -1,0 +1,520 @@
+{
+  "secteurs": {
+    "livraison": {
+      "nom": "Livraison & Logistique",
+      "panier_moyen": 35,
+      "marge_moyenne_pct": 18,
+      "taux_croissance_annuel": 25,
+      "concurrence": "forte",
+      "barriere_entree": "moyenne",
+      "taille_marche_mdt": 450,
+      "description": "Services de livraison de colis et derniers kilomètres"
+    },
+    "ecommerce": {
+      "nom": "E-Commerce",
+      "panier_moyen": 85,
+      "marge_moyenne_pct": 25,
+      "taux_croissance_annuel": 30,
+      "concurrence": "forte",
+      "barriere_entree": "faible",
+      "taille_marche_mdt": 800,
+      "description": "Vente en ligne de produits physiques et numériques"
+    },
+    "services": {
+      "nom": "Services Numériques",
+      "panier_moyen": 150,
+      "marge_moyenne_pct": 45,
+      "taux_croissance_annuel": 20,
+      "concurrence": "moyenne",
+      "barriere_entree": "moyenne",
+      "taille_marche_mdt": 350,
+      "description": "Développement web, consulting IT, services SaaS"
+    },
+    "foodtech": {
+      "nom": "Food Tech",
+      "panier_moyen": 25,
+      "marge_moyenne_pct": 15,
+      "taux_croissance_annuel": 35,
+      "concurrence": "forte",
+      "barriere_entree": "moyenne",
+      "taille_marche_mdt": 300,
+      "description": "Restauration en ligne, dark kitchens, meal kits"
+    },
+    "edtech": {
+      "nom": "EdTech",
+      "panier_moyen": 60,
+      "marge_moyenne_pct": 55,
+      "taux_croissance_annuel": 40,
+      "concurrence": "faible",
+      "barriere_entree": "moyenne",
+      "taille_marche_mdt": 150,
+      "description": "Formation en ligne, tutorat, plateformes éducatives"
+    },
+    "healthtech": {
+      "nom": "HealthTech",
+      "panier_moyen": 120,
+      "marge_moyenne_pct": 35,
+      "taux_croissance_annuel": 28,
+      "concurrence": "faible",
+      "barriere_entree": "élevée",
+      "taille_marche_mdt": 200,
+      "description": "Télémédecine, gestion de santé, pharmacie en ligne"
+    },
+    "fintech": {
+      "nom": "FinTech",
+      "panier_moyen": 50,
+      "marge_moyenne_pct": 40,
+      "taux_croissance_annuel": 30,
+      "concurrence": "moyenne",
+      "barriere_entree": "élevée",
+      "taille_marche_mdt": 250,
+      "description": "Paiement mobile, microfinance, assurance digitale"
+    },
+    "agritech": {
+      "nom": "AgriTech",
+      "panier_moyen": 200,
+      "marge_moyenne_pct": 20,
+      "taux_croissance_annuel": 15,
+      "concurrence": "faible",
+      "barriere_entree": "élevée",
+      "taille_marche_mdt": 180,
+      "description": "Agriculture intelligente, IoT agricole, marketplace agricole"
+    }
+  },
+
+  "transport": {
+    "intigo": {
+      "tarifs_base": {
+        "grand_tunis": 7.0,
+        "inter_ville": 9.5,
+        "zones_eloignees": 12.0,
+        "express_grand_tunis": 10.0,
+        "express_inter_ville": 14.0
+      },
+      "supplements": {
+        "colis_volumineux": 3.0,
+        "contre_remboursement": 1.5,
+        "assurance": 2.0,
+        "retour_colis": 5.0
+      },
+      "remises_volume": {
+        "plus_100": 10,
+        "plus_500": 15,
+        "plus_1000": 20,
+        "plus_5000": 25
+      }
+    },
+    "autres_transporteurs": {
+      "aramex": {"base": 8.0, "inter_ville": 11.0},
+      "fedex": {"base": 15.0, "inter_ville": 22.0},
+      "poste_tunisienne": {"base": 4.5, "inter_ville": 6.0},
+      "livrili": {"base": 6.5, "inter_ville": 9.0}
+    }
+  },
+
+  "paiement_bct": {
+    "moyens_paiement": {
+      "especes_livraison": {"part_marche_pct": 65, "commission_pct": 0, "delai_reception_jours": 0},
+      "carte_bancaire": {"part_marche_pct": 15, "commission_pct": 2.5, "delai_reception_jours": 3},
+      "virement_bancaire": {"part_marche_pct": 8, "commission_pct": 0.5, "delai_reception_jours": 2},
+      "paiement_mobile": {"part_marche_pct": 7, "commission_pct": 1.5, "delai_reception_jours": 1},
+      "e_dinar": {"part_marche_pct": 3, "commission_pct": 1.0, "delai_reception_jours": 1},
+      "cheque": {"part_marche_pct": 2, "commission_pct": 0, "delai_reception_jours": 5}
+    },
+    "reglementation": {
+      "plafond_paiement_mobile_dt": 5000,
+      "age_minimum_compte": 18,
+      "kyc_obligatoire": true,
+      "devise": "DT"
+    }
+  },
+
+  "benchmarks_sectoriels": {
+    "livraison": {
+      "taux_conversion_moyen_pct": 3.5,
+      "cout_acquisition_client_dt": 8,
+      "taux_retention_pct": 40,
+      "delai_livraison_moyen_jours": 2,
+      "taux_retour_pct": 12,
+      "nps_moyen": 35
+    },
+    "ecommerce": {
+      "taux_conversion_moyen_pct": 2.8,
+      "cout_acquisition_client_dt": 15,
+      "taux_retention_pct": 30,
+      "delai_livraison_moyen_jours": 3,
+      "taux_retour_pct": 18,
+      "nps_moyen": 28
+    },
+    "services": {
+      "taux_conversion_moyen_pct": 5.0,
+      "cout_acquisition_client_dt": 25,
+      "taux_retention_pct": 60,
+      "cycle_vente_moyen_jours": 15,
+      "taux_churn_mensuel_pct": 5,
+      "nps_moyen": 42
+    },
+    "foodtech": {
+      "taux_conversion_moyen_pct": 4.2,
+      "cout_acquisition_client_dt": 6,
+      "taux_retention_pct": 45,
+      "delai_livraison_moyen_minutes": 45,
+      "taux_retour_pct": 5,
+      "nps_moyen": 38
+    },
+    "edtech": {
+      "taux_conversion_moyen_pct": 3.0,
+      "cout_acquisition_client_dt": 12,
+      "taux_retention_pct": 55,
+      "taux_completion_cours_pct": 25,
+      "taux_churn_mensuel_pct": 8,
+      "nps_moyen": 45
+    },
+    "healthtech": {
+      "taux_conversion_moyen_pct": 4.5,
+      "cout_acquisition_client_dt": 20,
+      "taux_retention_pct": 65,
+      "satisfaction_patient_pct": 78,
+      "taux_churn_mensuel_pct": 3,
+      "nps_moyen": 50
+    }
+  },
+
+  "financement": {
+    "bfpme": {
+      "nom": "Banque de Financement des Petites et Moyennes Entreprises",
+      "type": "banque_publique",
+      "montant_min_dt": 10000,
+      "montant_max_dt": 500000,
+      "taux_interet_pct": 5.0,
+      "duree_max_ans": 12,
+      "conditions": "Projet viable, promoteur tunisien, apport personnel 10-30%",
+      "secteurs_prioritaires": ["industrie", "services", "technologie", "agriculture"]
+    },
+    "cdc": {
+      "nom": "Caisse des Dépôts et Consignations",
+      "type": "institution_publique",
+      "montant_min_dt": 50000,
+      "montant_max_dt": 2000000,
+      "taux_interet_pct": 4.5,
+      "duree_max_ans": 15,
+      "conditions": "Projet structurant, impact emploi, innovation",
+      "secteurs_prioritaires": ["infrastructure", "technologie", "industrie"]
+    },
+    "sicar": {
+      "nom": "Sociétés d'Investissement en Capital Risque",
+      "type": "capital_risque",
+      "montant_min_dt": 100000,
+      "montant_max_dt": 5000000,
+      "participation_pct": "20-49%",
+      "duree_participation_ans": "5-7",
+      "conditions": "Fort potentiel de croissance, équipe solide, marché identifié",
+      "exemples": ["SICAR Avenir", "SICAR Invest", "Carthage Business Angels"]
+    },
+    "smart_capital": {
+      "nom": "Smart Capital (ex-CDC PME)",
+      "type": "fonds_public",
+      "programmes": {
+        "startup_act": {
+          "montant_max_dt": 100000,
+          "type": "subvention_pret",
+          "conditions": "Label Startup Act, moins de 8 ans"
+        },
+        "fond_fonds": {
+          "montant_max_dt": 500000,
+          "type": "co_investissement",
+          "conditions": "Via un fonds partenaire agréé"
+        }
+      }
+    },
+    "biat_capital": {
+      "nom": "BIAT Capital",
+      "type": "capital_investissement",
+      "montant_min_dt": 500000,
+      "montant_max_dt": 10000000,
+      "focus": "PME en croissance, secteurs porteurs"
+    },
+    "startup_act": {
+      "nom": "Programme Startup Act Tunisie",
+      "type": "programme_gouvernemental",
+      "avantages": [
+        "Exonération fiscale pendant 8 ans",
+        "Exonération des charges sociales pendant 1 an",
+        "Bourse de 1000 DT/mois pendant 1 an",
+        "Accès au compte en devises",
+        "Facilités d'importation",
+        "Couverture sociale pour le fondateur"
+      ],
+      "conditions": [
+        "Entreprise de moins de 8 ans",
+        "Activité innovante et à fort potentiel",
+        "Validation par un comité de labellisation"
+      ]
+    },
+    "organisations_soutien": [
+      {"nom": "Flat6Labs Tunis", "type": "accélérateur", "montant_dt": "30000-120000"},
+      {"nom": "Cogite", "type": "coworking_incubateur", "services": "mentorat, networking"},
+      {"nom": "Wiki Startup", "type": "incubateur", "services": "formation, accompagnement"},
+      {"nom": "Founder Institute Tunis", "type": "pre_accelerateur", "services": "formation, mentorat"},
+      {"nom": "GIZ Tunisia", "type": "cooperation_internationale", "services": "financement, formation"},
+      {"nom": "AfricInvest", "type": "fonds_investissement", "montant_dt": "1000000+"}
+    ]
+  },
+
+  "couts_startup": {
+    "creation_entreprise": {
+      "suarl": {
+        "capital_min_dt": 1000,
+        "frais_creation_dt": 350,
+        "delai_jours": 5,
+        "description": "Société Unipersonnelle à Responsabilité Limitée"
+      },
+      "sarl": {
+        "capital_min_dt": 1000,
+        "frais_creation_dt": 500,
+        "delai_jours": 7,
+        "description": "Société à Responsabilité Limitée"
+      },
+      "sa": {
+        "capital_min_dt": 5000,
+        "frais_creation_dt": 1200,
+        "delai_jours": 15,
+        "description": "Société Anonyme"
+      }
+    },
+    "charges_fixes_mensuelles": {
+      "bureau_coworking": {"min": 150, "max": 500},
+      "bureau_prive_petit": {"min": 500, "max": 1500},
+      "bureau_prive_grand": {"min": 1500, "max": 4000},
+      "internet_fibre": {"min": 50, "max": 150},
+      "telephone_mobile": {"min": 30, "max": 80},
+      "comptabilite": {"min": 150, "max": 500},
+      "assurance_rc": {"min": 100, "max": 300},
+      "hebergement_web": {"min": 20, "max": 200},
+      "logiciels_saas": {"min": 50, "max": 500},
+      "marketing_digital": {"min": 200, "max": 2000}
+    },
+    "salaires_moyens_dt": {
+      "developpeur_junior": {"min": 1200, "max": 2000},
+      "developpeur_senior": {"min": 2500, "max": 4500},
+      "designer_ui_ux": {"min": 1500, "max": 3000},
+      "marketing_manager": {"min": 1800, "max": 3500},
+      "commercial": {"min": 1000, "max": 2500, "plus_commission": true},
+      "community_manager": {"min": 800, "max": 1500},
+      "support_client": {"min": 700, "max": 1200},
+      "directeur_general": {"min": 3000, "max": 8000},
+      "comptable": {"min": 1200, "max": 2500},
+      "livreur": {"min": 600, "max": 1000}
+    },
+    "charges_sociales_pct": {
+      "cnss_employeur": 16.57,
+      "cnss_employe": 9.18,
+      "accident_travail": 0.5,
+      "total_employeur": 17.07
+    }
+  },
+
+  "indicateurs_macro": {
+    "population": 12000000,
+    "population_active": 4200000,
+    "taux_chomage_pct": 15.2,
+    "taux_chomage_jeunes_pct": 36.5,
+    "pib_milliards_dt": 140,
+    "taux_inflation_pct": 7.8,
+    "taux_interet_directeur_pct": 8.0,
+    "taux_change_eur_dt": 3.35,
+    "taux_change_usd_dt": 3.10,
+    "penetration_internet_pct": 72,
+    "penetration_smartphone_pct": 65,
+    "nombre_startups_labelisees": 850,
+    "regions": {
+      "grand_tunis": {"population": 2800000, "pib_pct": 35},
+      "sahel": {"population": 1500000, "pib_pct": 15},
+      "sfax": {"population": 1000000, "pib_pct": 12},
+      "cap_bon": {"population": 800000, "pib_pct": 8},
+      "nord_ouest": {"population": 1200000, "pib_pct": 7},
+      "sud": {"population": 1500000, "pib_pct": 8},
+      "centre": {"population": 1200000, "pib_pct": 6},
+      "autres": {"population": 2000000, "pib_pct": 9}
+    }
+  },
+
+  "startup_ideas": {
+    "livraison": [
+      {
+        "nom": "Livraison Express Éco",
+        "description": "Service de livraison dernier kilomètre avec vélos et scooters électriques dans le Grand Tunis",
+        "investissement_initial_dt": 50000,
+        "revenus_mensuels_estimes_dt": 15000,
+        "risque": "moyen",
+        "opportunite": "Demande croissante e-commerce + écologie",
+        "competences": ["logistique", "gestion", "technologie"]
+      },
+      {
+        "nom": "Plateforme Logistique B2B",
+        "description": "Marketplace connectant expéditeurs et transporteurs pour optimiser les trajets inter-villes",
+        "investissement_initial_dt": 80000,
+        "revenus_mensuels_estimes_dt": 25000,
+        "risque": "élevé",
+        "opportunite": "Marché fragmenté, digitalisation faible",
+        "competences": ["développement", "logistique", "commercial"]
+      }
+    ],
+    "ecommerce": [
+      {
+        "nom": "Marketplace Artisanat Tunisien",
+        "description": "Plateforme e-commerce spécialisée dans l'artisanat tunisien authentique avec expédition internationale",
+        "investissement_initial_dt": 30000,
+        "revenus_mensuels_estimes_dt": 12000,
+        "risque": "moyen",
+        "opportunite": "Patrimoine culturel unique + diaspora tunisienne",
+        "competences": ["e-commerce", "marketing", "logistique"]
+      },
+      {
+        "nom": "Box Abonnement Produits Locaux",
+        "description": "Box mensuelle de produits du terroir tunisien livrée à domicile",
+        "investissement_initial_dt": 20000,
+        "revenus_mensuels_estimes_dt": 8000,
+        "risque": "faible",
+        "opportunite": "Tendance consommation locale + récurrence",
+        "competences": ["marketing", "sourcing", "logistique"]
+      }
+    ],
+    "foodtech": [
+      {
+        "nom": "Dark Kitchen Multi-Marques",
+        "description": "Cuisine fantôme proposant plusieurs marques virtuelles de restauration rapide via les apps de livraison",
+        "investissement_initial_dt": 60000,
+        "revenus_mensuels_estimes_dt": 20000,
+        "risque": "moyen",
+        "opportunite": "Croissance delivery + optimisation des coûts",
+        "competences": ["restauration", "gestion", "marketing"]
+      },
+      {
+        "nom": "App Meal Prep Santé",
+        "description": "Application de préparation de repas sains avec livraison hebdomadaire et plans nutritionnels",
+        "investissement_initial_dt": 40000,
+        "revenus_mensuels_estimes_dt": 10000,
+        "risque": "moyen",
+        "opportunite": "Tendance santé + manque d'offre structurée",
+        "competences": ["nutrition", "développement", "marketing"]
+      }
+    ],
+    "edtech": [
+      {
+        "nom": "Plateforme Soutien Scolaire",
+        "description": "Plateforme de cours particuliers en ligne avec matching IA tuteur-élève pour le programme tunisien",
+        "investissement_initial_dt": 35000,
+        "revenus_mensuels_estimes_dt": 15000,
+        "risque": "faible",
+        "opportunite": "Fort besoin + parents prêts à investir",
+        "competences": ["éducation", "développement", "marketing"]
+      },
+      {
+        "nom": "Formation Professionnelle en Ligne",
+        "description": "Plateforme de certification professionnelle en ligne adaptée au marché de l'emploi tunisien",
+        "investissement_initial_dt": 45000,
+        "revenus_mensuels_estimes_dt": 18000,
+        "risque": "moyen",
+        "opportunite": "Chômage jeunes + gap compétences",
+        "competences": ["éducation", "développement", "RH"]
+      }
+    ],
+    "healthtech": [
+      {
+        "nom": "Téléconsultation Médicale",
+        "description": "Application de consultation médicale à distance avec ordonnance électronique et suivi patient",
+        "investissement_initial_dt": 100000,
+        "revenus_mensuels_estimes_dt": 30000,
+        "risque": "élevé",
+        "opportunite": "Déserts médicaux + digitalisation santé",
+        "competences": ["santé", "développement", "réglementation"]
+      }
+    ],
+    "services": [
+      {
+        "nom": "Agence Marketing Digital",
+        "description": "Agence spécialisée en marketing digital pour les PME tunisiennes avec focus sur les réseaux sociaux",
+        "investissement_initial_dt": 15000,
+        "revenus_mensuels_estimes_dt": 10000,
+        "risque": "faible",
+        "opportunite": "PME en retard digital + coûts compétitifs",
+        "competences": ["marketing", "design", "communication"]
+      },
+      {
+        "nom": "Studio Développement SaaS",
+        "description": "Développement de solutions SaaS pour les entreprises tunisiennes (CRM, ERP, facturation)",
+        "investissement_initial_dt": 25000,
+        "revenus_mensuels_estimes_dt": 20000,
+        "risque": "moyen",
+        "opportunite": "Digitalisation entreprises + revenus récurrents",
+        "competences": ["développement", "gestion_projet", "commercial"]
+      }
+    ],
+    "fintech": [
+      {
+        "nom": "App Gestion Budget Personnel",
+        "description": "Application mobile de gestion budgétaire adaptée aux habitudes financières tunisiennes",
+        "investissement_initial_dt": 40000,
+        "revenus_mensuels_estimes_dt": 8000,
+        "risque": "moyen",
+        "opportunite": "Faible éducation financière + smartphone en hausse",
+        "competences": ["finance", "développement", "UX"]
+      }
+    ],
+    "agritech": [
+      {
+        "nom": "Marketplace Agricole B2B",
+        "description": "Plateforme connectant producteurs agricoles et acheteurs (restaurants, hôtels, supermarchés)",
+        "investissement_initial_dt": 55000,
+        "revenus_mensuels_estimes_dt": 12000,
+        "risque": "élevé",
+        "opportunite": "Chaîne d'approvisionnement inefficiente",
+        "competences": ["agriculture", "développement", "commercial"]
+      }
+    ]
+  },
+
+  "personas_types": {
+    "etudiant": {
+      "age_range": [18, 25],
+      "revenu_moyen_dt": 300,
+      "localisation": "urbain",
+      "sensibilite_prix": "très élevée",
+      "canaux_preferes": ["instagram", "tiktok", "facebook"],
+      "comportement_achat": "impulsif, mobile-first, influence par les pairs"
+    },
+    "jeune_professionnel": {
+      "age_range": [25, 35],
+      "revenu_moyen_dt": 1800,
+      "localisation": "urbain",
+      "sensibilite_prix": "moyenne",
+      "canaux_preferes": ["instagram", "linkedin", "google"],
+      "comportement_achat": "recherche qualité, comparaison en ligne, fidélisable"
+    },
+    "famille": {
+      "age_range": [30, 50],
+      "revenu_moyen_dt": 3000,
+      "localisation": "urbain_periurbain",
+      "sensibilite_prix": "élevée",
+      "canaux_preferes": ["facebook", "whatsapp", "bouche_a_oreille"],
+      "comportement_achat": "planifié, recherche de promotions, fidèle aux marques"
+    },
+    "entrepreneur": {
+      "age_range": [25, 45],
+      "revenu_moyen_dt": 2500,
+      "localisation": "urbain",
+      "sensibilite_prix": "moyenne",
+      "canaux_preferes": ["linkedin", "facebook", "email"],
+      "comportement_achat": "orienté ROI, networking, early adopter"
+    },
+    "senior": {
+      "age_range": [50, 70],
+      "revenu_moyen_dt": 2000,
+      "localisation": "urbain_periurbain",
+      "sensibilite_prix": "élevée",
+      "canaux_preferes": ["facebook", "television", "bouche_a_oreille"],
+      "comportement_achat": "conservateur, fidèle, préfère le physique"
+    }
+  }
+}
