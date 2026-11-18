@@ -1462,6 +1462,77 @@ def ai_advice():
             'description': description_projet,
         }
 
+        # Traitement conversationnel intelligent si une question est posée
+        if question_posee:
+            q = question_posee.strip().lower()
+            greetings = ['bonjour', 'salut', 'salam', 'hello', 'coucou', 'bonsoir', 'hey', 'bjr', 'slm', 'slt', 'assalamou', 'ahla', 'aslema']
+            
+            # 1. Salutations simples
+            if any(q == g or (q.startswith(g) and len(q.split()) <= 3) for g in greetings):
+                return jsonify({
+                    "success": True,
+                    "type": "conversation",
+                    "reponse": "Bonjour ! 👋 Je suis votre copilote IA pour votre startup en Tunisie.\n\nJe peux analyser la viabilité de votre projet, optimiser vos coûts ou vous guider sur les financements tunisiens.\n\nQue souhaitez-vous explorer ?",
+                    "suggestions": [
+                        "Mon transport coûte trop cher, que faire ?",
+                        "Comment financer mon projet en Tunisie ?",
+                        "Comment optimiser mes marges et mon prix ?",
+                        "Analyser la viabilité de mon projet"
+                    ]
+                })
+
+            # 2. Questions thématiques ciblées (on renvoie uniquement le conseil pertinent sans le dump complet)
+            if any(w in q for w in ['transport', 'livraison', 'logistique', 'livrer']):
+                ct = _conseil_transport(cout_transport or 8, panier_moyen or 89, marge_pct, charges_fixes)
+                return jsonify({
+                    "success": True,
+                    "type": "reponse_ciblee",
+                    "reponse": "Voici mes recommandations spécifiques pour optimiser votre logistique et réduire vos frais de livraison en Tunisie :",
+                    "conseils": {"transport": ct},
+                    "suggestions": ["Comment financer mon projet en Tunisie ?", "Optimiser mes prix", "Analyser tout mon projet"]
+                })
+
+            if any(w in q for w in ['financ', 'argent', 'startup act', 'subvention', 'investiss', 'bfpme', 'fonds', 'capital', 'aide']):
+                cf = _conseil_financement(stade, budget, secteur)
+                return jsonify({
+                    "success": True,
+                    "type": "reponse_ciblee",
+                    "reponse": "Voici les meilleures opportunités de financement pour votre projet en Tunisie :",
+                    "conseils": {"financement": cf},
+                    "suggestions": ["Mon transport coûte trop cher, que faire ?", "Comment optimiser mon prix ?", "Analyser tout mon projet"]
+                })
+
+            if any(w in q for w in ['prix', 'marge', 'rentab', 'tarif', 'cher', 'coût', 'cout']):
+                cp = _conseil_prix(marge_pct, concurrence, type_client, secteur, ctx)
+                return jsonify({
+                    "success": True,
+                    "type": "reponse_ciblee",
+                    "reponse": "Voici mon analyse de votre pricing et de votre structure de marge :",
+                    "conseils": {"strategie_prix": cp},
+                    "suggestions": ["Comment financer mon projet en Tunisie ?", "Comment réduire le transport ?", "Analyser tout mon projet"]
+                })
+
+            if any(w in q for w in ['concurren', 'différenc', 'differenc', 'concurrent']):
+                cm = _conseil_entree_marche(secteur, stade, type_client, concurrence)
+                return jsonify({
+                    "success": True,
+                    "type": "reponse_ciblee",
+                    "reponse": "Face à la concurrence sur le marché tunisien, voici les leviers prioritaires :",
+                    "conseils": {"strategie_entree_marche": cm},
+                    "suggestions": ["Stratégie marketing recommandée", "Optimiser mes prix", "Analyser tout mon projet"]
+                })
+
+            if any(w in q for w in ['market', 'client', 'vent', 'pub', 'acquisit', 'canal', 'canaux', 'attirer']):
+                cmk = _conseil_marketing(secteur, type_client, stade, budget)
+                return jsonify({
+                    "success": True,
+                    "type": "reponse_ciblee",
+                    "reponse": "Voici les canaux d'acquisition les plus performants en Tunisie pour votre cible :",
+                    "conseils": {"marketing": cmk},
+                    "suggestions": ["Comment optimiser mon prix ?", "Comment financer mon projet ?", "Analyser tout mon projet"]
+                })
+
+        # 3. Diagnostic complet (quand demandé explicitement ou sans question ciblée)
         conseils = {
             "strategie_entree_marche": _conseil_entree_marche(secteur, stade, type_client, concurrence),
             "strategie_prix": _conseil_prix(marge_pct, concurrence, type_client, secteur, ctx),
@@ -1472,7 +1543,7 @@ def ai_advice():
         }
 
         # Conseil transport si question sur coût transport
-        if question_posee and 'transport' in question_posee.lower() and cout_transport > 0:
+        if question_posee and any(w in question_posee.lower() for w in ['transport', 'livraison']) and cout_transport > 0:
             conseils["transport"] = _conseil_transport(cout_transport, panier_moyen, marge_pct, charges_fixes)
 
         # Score de confiance (rule-based)
@@ -1480,6 +1551,7 @@ def ai_advice():
 
         return jsonify({
             "success": True,
+            "type": "analyse_complete",
             "conseils": conseils,
             "score_confiance": score_global,
             "resume": _resume_conseil(conseils, score_global),

@@ -1143,43 +1143,72 @@ const App = {
       // Remove loading
       document.getElementById('adviceLoading')?.remove();
 
-      // Score banner
-      const sc = data.score_confiance;
-      chatEl.innerHTML += `<div class="advice-card" style="border-left-color:${sc.score >= 70 ? 'var(--success)' : sc.score >= 50 ? 'var(--warning)' : 'var(--danger)'}">
-        <div class="advice-header">
-          <span style="font-size:28px">${sc.emoji}</span>
-          <div>
-            <strong style="font-size:18px">${sc.label}</strong>
-            <span style="font-size:14px;color:var(--text-light)"> — Score: ${sc.score}/100</span>
+      // 1. Message conversationnel de l'IA (ex: salutation ou réponse directe)
+      if (data.type === 'conversation' || data.reponse) {
+        let convHtml = `<div class="advice-card" style="border-left-color:var(--secondary);background:var(--surface)">
+          <div class="advice-header">
+            <span style="font-size:22px"><i class="fas fa-wand-magic-sparkles" style="color:var(--brand-500)"></i></span>
+            <strong style="font-size:15px">Assistant Startup Stress-Test TN</strong>
           </div>
-        </div>
-        <p class="advice-text">${data.resume.message}</p>
-      </div>`;
+          <p class="advice-text" style="white-space:pre-line;line-height:1.7;margin-top:8px">${data.reponse}</p>`;
 
-      // Advice cards by category
-      Object.entries(data.conseils).forEach(([cat, items]) => {
-        if (!Array.isArray(items) || !items.length) return;
-        items.forEach(item => {
-          const prio = item.priorite || 'recommandé';
-          const prioCls = prio === 'critique' ? 'critique' : prio === 'haute' ? 'important' : 'recommande';
-          chatEl.innerHTML += `<div class="advice-card ${prioCls}">
-            <div class="advice-header">
-              <span class="advice-badge ${prioCls}">${prio}</span>
-              <span class="advice-category">${cat.replace(/_/g, ' ')}</span>
+        if (data.suggestions && data.suggestions.length) {
+          convHtml += `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">` +
+            data.suggestions.map(s => `<button class="btn btn-sm btn-ghost" onclick="App.askSpecificAdvice('${s.replace(/'/g, "\\'")}')" style="font-size:12px;border-radius:14px;border-color:var(--border);padding:6px 12px">
+              <i class="fas fa-comment-dots" style="color:var(--primary);margin-right:4px"></i> ${s}
+            </button>`).join('') + `</div>`;
+        }
+        convHtml += `</div>`;
+        chatEl.innerHTML += convHtml;
+      }
+
+      // 2. Score banner (uniquement si score fourni, ex: analyse complète)
+      if (data.score_confiance) {
+        const sc = data.score_confiance;
+        chatEl.innerHTML += `<div class="advice-card" style="border-left-color:${sc.score >= 70 ? 'var(--success)' : sc.score >= 50 ? 'var(--warning)' : 'var(--danger)'}">
+          <div class="advice-header">
+            <span style="font-size:28px">${sc.emoji}</span>
+            <div>
+              <strong style="font-size:18px">${sc.label}</strong>
+              <span style="font-size:14px;color:var(--text-light)"> — Score: ${sc.score}/100</span>
             </div>
-            <strong style="display:block;margin-bottom:8px">${item.titre}</strong>
-            <p class="advice-text">${item.description}</p>
-            ${item.actions ? '<ul style="margin-top:10px;padding-left:20px;font-size:13px;color:var(--text)">' + item.actions.map(a => '<li style="margin-bottom:4px">' + a + '</li>').join('') + '</ul>' : ''}
-            ${item.sources ? '<div style="margin-top:12px">' + item.sources.map(s => `<div style="display:flex;justify-content:space-between;padding:6px 0;font-size:12px;border-bottom:1px solid var(--gray-100)"><span>${s.nom}</span><span style="color:var(--text-light)">${s.montant || ''}</span></div>`).join('') + '</div>' : ''}
-          </div>`;
+          </div>
+          <p class="advice-text">${data.resume?.message || ''}</p>
+        </div>`;
+      }
+
+      // 3. Cartes de conseil ciblées ou complètes
+      if (data.conseils) {
+        Object.entries(data.conseils).forEach(([cat, items]) => {
+          if (!Array.isArray(items) || !items.length) return;
+          items.forEach(item => {
+            const prio = item.priorite || 'recommandé';
+            const prioCls = prio === 'critique' ? 'critique' : prio === 'haute' ? 'important' : 'recommande';
+            chatEl.innerHTML += `<div class="advice-card ${prioCls}">
+              <div class="advice-header">
+                <span class="advice-badge ${prioCls}">${prio}</span>
+                <span class="advice-category">${cat.replace(/_/g, ' ')}</span>
+              </div>
+              <strong style="display:block;margin-bottom:8px">${item.titre}</strong>
+              <p class="advice-text">${item.description}</p>
+              ${item.actions ? '<ul style="margin-top:10px;padding-left:20px;font-size:13px;color:var(--text)">' + item.actions.map(a => '<li style="margin-bottom:4px">' + a + '</li>').join('') + '</ul>' : ''}
+              ${item.sources ? '<div style="margin-top:12px">' + item.sources.map(s => `<div style="display:flex;justify-content:space-between;padding:6px 0;font-size:12px;border-bottom:1px solid var(--gray-100)"><span>${s.nom}</span><span style="color:var(--text-light)">${s.montant || ''}</span></div>`).join('') + '</div>' : ''}
+            </div>`;
+          });
         });
-      });
+      }
 
       chatEl.scrollTop = chatEl.scrollHeight;
     } catch (err) {
       document.getElementById('adviceLoading')?.remove();
       chatEl.innerHTML += `<div class="error-banner"><i class="fas fa-exclamation-circle"></i> ${err.message}</div>`;
     }
+  },
+
+  askSpecificAdvice(text) {
+    const input = document.getElementById('adviceInput');
+    if (input) input.value = text;
+    this.askAdvice();
   },
 
   // ==================== STARTUP SUGGESTIONS ====================
